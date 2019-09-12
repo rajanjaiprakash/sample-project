@@ -11,6 +11,9 @@ enablePlugins(GitVersioning, DockerPlugin)
 
 git.useGitDescribe := true
 
-publishTo := Some("sample-projects" at "https://github.com/rajanjaiprakash")
-
-credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
+daemonUserUid in Docker := None
+daemonUser in Docker    := "daemon"
+dockerBaseImage := "openjdk:8-jre-alpine"
+dockerExposedPorts := Seq(9000)
+dockerUsername := Some("rajanjaiprakash")
+dockerRepository := Some("https://cloud.docker.com/repository/registry-1.docker.io/dragonaire/sample-proj")
