@@ -10,7 +10,7 @@ releaseUseGlobalVersion := false
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
-enablePlugins(GitVersioning, DockerPlugin)
+enablePlugins(GitVersioning, DockerPlugin, JavaServerAppPackaging)
 
 git.useGitDescribe := true
 
