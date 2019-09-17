@@ -19,7 +19,7 @@ daemonUser in Docker    := "daemon"
 dockerBaseImage := "openjdk:8-jre-alpine"
 dockerExposedPorts := Seq(9000)
 dockerUsername := Some("dragonaire")
-dockerRepository := Some("https://cloud.docker.com/repository/registry-1.docker.io/dragonaire/sample-proj")
+dockerRepository := Some("sample-proj")
 
 def setVersion(selectVersion: Versions => String): ReleaseStep = { st: State =>
 
