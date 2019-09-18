@@ -3,7 +3,6 @@ import sbtrelease.ReleaseStateTransformations._
 
 
 name := "hello-demo"
-version := "1.1.1"
 scalaVersion := "2.13.0"
 
 releaseUseGlobalVersion := false
