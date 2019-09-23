@@ -75,10 +75,8 @@ commands += Command.command("releaseOverride")((state: State) => {
   println("Preparing to override release...")
   val extracted = Project.extract(state)
 
-  val st = extracted.appendWithSession(Seq(releaseVersion := { ver =>
-    Version(ver).fold(versionFormatError(ver))(
-      _.bump.withoutQualifier.string)
-  }), state)
+  val st = extracted.appendWithSession(Seq(releaseVersion := {_ => versionString}
+  ), state)
   Command.process("release with-defaults default-tag-exists-answer o", st)
 })
 
