@@ -5,7 +5,7 @@ import sbtrelease.ReleaseStateTransformations._
 name := "hello-demo"
 scalaVersion := "2.13.0"
 
-//releaseUseGlobalVersion := false
+releaseUseGlobalVersion := false
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
@@ -51,7 +51,7 @@ releaseProcess := Seq(
 
 commands += Command.command("releaseBugfix")((state: State) => {
   println("Preparing bugfix...")
-  val extracted = Project extract state
+  val extracted = Project.extract(state)
 
   val st = extracted.appendWithSession(Seq(releaseVersion := { ver =>
     Version(ver).fold(versionFormatError(ver))(
@@ -62,7 +62,7 @@ commands += Command.command("releaseBugfix")((state: State) => {
 
 commands += Command.command("releaseMinor")((state: State) => {
   println("Preparing minor release...")
-  val extracted = Project extract state
+  val extracted = Project.extract(state)
 
   val st = extracted.appendWithSession(Seq(releaseVersion := { ver =>
     Version(ver).fold(versionFormatError(ver))(
