@@ -77,7 +77,7 @@ commands += Command.command("releaseOverride")((state: State) => {
 
   val st = extracted.appendWithSession(Seq(releaseVersion := { ver =>
     Version(ver).fold(versionFormatError(ver))(
-      _.withoutQualifier.string)
+      _.bump.withoutQualifier.string)
   }), state)
   Command.process("release with-defaults default-tag-exists-answer o", st)
 })
