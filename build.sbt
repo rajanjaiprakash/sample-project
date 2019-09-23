@@ -70,3 +70,25 @@ commands += Command.command("releaseMinor")((state: State) => {
   }), state)
   Command.process("release with-defaults", st)
 })
+
+commands += Command.command("releaseOverride")((state: State) => {
+  println("Preparing to override release...")
+  val extracted = Project.extract(state)
+
+  val st = extracted.appendWithSession(Seq(releaseVersion := { ver =>
+    Version(ver).fold(versionFormatError(ver))(
+      _.withoutQualifier.string)
+  }), state)
+  Command.process("release with-defaults default-tag-exists-answer o", st)
+})
+
+commands += Command.command("releaseMajor")((state: State) => {
+  println("Preparing Major release...")
+  val extracted = Project.extract(state)
+
+  val st = extracted.appendWithSession(Seq(releaseVersion := { ver =>
+    Version(ver).fold(versionFormatError(ver))(
+      _.withoutQualifier.bumpMajor.string)
+  }), state)
+  Command.process("release with-defaults", st)
+})
