@@ -12,6 +12,8 @@ lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRe
 enablePlugins(GitVersioning, DockerPlugin, JavaServerAppPackaging)
 
 git.useGitDescribe := true
+git.baseVersion := "0.0.0"
+
 
 daemonUserUid in Docker := None
 daemonUser in Docker    := "daemon"
