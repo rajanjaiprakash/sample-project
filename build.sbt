@@ -5,7 +5,7 @@ import sbtrelease.ReleaseStateTransformations._
 name := "hello-demo"
 scalaVersion := "2.13.0"
 
-releaseUseGlobalVersion := false
+//releaseUseGlobalVersion := false
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
