@@ -9,17 +9,17 @@ releaseUseGlobalVersion := false
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
-enablePlugins(GitVersioning, DockerPlugin, JavaServerAppPackaging)
+enablePlugins(/*GitVersioning,*/ DockerPlugin, JavaServerAppPackaging)
 
-git.useGitDescribe := true
-git.baseVersion := "0.0.0"
-val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
-git.gitTagToVersionNumber := {
-  case VersionRegex(v,"") => Some(v)
-  case VersionRegex(v,"SNAPSHOT") => Some(s"$v-SNAPSHOT")
-  case VersionRegex(v,s) => Some(s"$v-$s")
-  case _ => None
-}
+//git.useGitDescribe := true
+//git.baseVersion := "0.0.0"
+//val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
+//git.gitTagToVersionNumber := {
+//  case VersionRegex(v,"") => Some(v)
+//  case VersionRegex(v,"SNAPSHOT") => Some(s"$v-SNAPSHOT")
+//  case VersionRegex(v,s) => Some(s"$v-$s")
+//  case _ => None
+//}
 
 daemonUserUid in Docker := None
 daemonUser in Docker    := "daemon"
