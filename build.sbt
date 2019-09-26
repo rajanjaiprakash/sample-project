@@ -43,6 +43,8 @@ def setVersion(selectVersion: Versions => String): ReleaseStep = { st: State =>
   ), st)
 }
 
+releaseVersionFile := file("version.sbt")
+
 lazy val setGitReleaseVersion: ReleaseStep = setVersion(_._1)
 
 releaseProcess := Seq(
