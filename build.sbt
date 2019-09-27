@@ -9,17 +9,7 @@ releaseUseGlobalVersion := false
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
-enablePlugins(/*GitVersioning,*/ DockerPlugin, JavaServerAppPackaging)
-
-//git.useGitDescribe := true
-//git.baseVersion := "0.0.0"
-//val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
-//git.gitTagToVersionNumber := {
-//  case VersionRegex(v,"") => Some(v)
-//  case VersionRegex(v,"SNAPSHOT") => Some(s"$v-SNAPSHOT")
-//  case VersionRegex(v,s) => Some(s"$v-$s")
-//  case _ => None
-//}
+enablePlugins(DockerPlugin, JavaServerAppPackaging)
 
 daemonUserUid in Docker := None
 daemonUser in Docker    := "daemon"
@@ -39,13 +29,13 @@ def setVersion(selectVersion: Versions => String): ReleaseStep = { st: State =>
 
   reapply(Seq(
     if (useGlobal) version in ThisBuild := selected
-    else version := selected
+    else version := versionFmt(dynverGitDescribeOutput.value.getOrElse(sys.error("No git version found")))
   ), st)
 }
 
-releaseVersionFile := file("version.sbt")
-
 lazy val setGitReleaseVersion: ReleaseStep = setVersion(_._1)
+
+def versionFmt(out: sbtdynver.GitDescribeOutput): String = out.ref.value
 
 releaseProcess := Seq(
   releaseStepCommand(ExtraReleaseCommands.initialVcsChecksCommand),
