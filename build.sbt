@@ -40,7 +40,7 @@ def versionFmt(out: sbtdynver.GitDescribeOutput): String = out.ref.value
 releaseProcess := Seq(
   releaseStepCommand(ExtraReleaseCommands.initialVcsChecksCommand),
   checkSnapshotDependencies,
-  inquireVersions,
+//  inquireVersions,
   setGitReleaseVersion,
   runClean,
   runTest,
