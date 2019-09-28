@@ -1,7 +1,6 @@
 import sbtrelease._
 import sbtrelease.ReleaseStateTransformations._
 
-
 name := "hello-demo"
 scalaVersion := "2.13.0"
 
@@ -29,22 +28,24 @@ def setVersion(selectVersion: Versions => String): ReleaseStep = { st: State =>
 
   reapply(Seq(
     if (useGlobal) version in ThisBuild := selected
-    else version := versionFmt(dynverGitDescribeOutput.value.getOrElse(sys.error("No git version found")))
+    else version := selected
   ), st)
 }
 
 lazy val setGitReleaseVersion: ReleaseStep = setVersion(_._1)
 
-def versionFmt(out: sbtdynver.GitDescribeOutput): String = out.ref.value
-
 releaseProcess := Seq(
   releaseStepCommand(ExtraReleaseCommands.initialVcsChecksCommand),
   checkSnapshotDependencies,
-//  inquireVersions,
+  inquireVersions,
   setGitReleaseVersion,
   runClean,
   runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
   tagRelease,
+  setNextVersion,
+  commitNextVersion,
   releaseStepTask(publish in Docker),
   pushChanges
 )
