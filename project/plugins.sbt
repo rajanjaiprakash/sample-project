@@ -8,4 +8,4 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.3.24")
 
 addSbtPlugin("org.scala-sbt" % "sbt-autoversion" % "1.0.0")
 
-addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.0.0")
+//addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.0.0")
