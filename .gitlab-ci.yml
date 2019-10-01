@@ -1,4 +1,4 @@
-image:mabhi256/sbt-dind-awscli:latest
+image: mabhi256/sbt-dind-awscli:latest
 
 services:
   - docker:dind
