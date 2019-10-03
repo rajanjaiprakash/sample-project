@@ -50,6 +50,7 @@ releaseProcess := Seq(
   pushChanges
 )
 
+
 commands += Command.command("releaseBugfix")((state: State) => {
   println("Preparing bugfix...")
   val extracted = Project.extract(state)
