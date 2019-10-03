@@ -25,9 +25,6 @@ build:
     - git checkout master
     - git config --global user.name "RAJAT JAIN"
     - git config --global user.email "rj.jain1008@gmail.com"
-    - git branch -u origin/master
-    - git config branch.master.remote origin
-    - git config branch.master.merge refs/heads/master
   script:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
     - sbt releaseMajor
