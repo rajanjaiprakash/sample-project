@@ -6,7 +6,6 @@ scalaVersion := "2.13.0"
 
 releaseUseGlobalVersion := false
 releaseIgnoreUntrackedFiles := true
-fork in run := true
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
