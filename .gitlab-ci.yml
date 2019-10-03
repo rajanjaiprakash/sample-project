@@ -27,7 +27,7 @@ build:
     - git config branch.master.remote origin
     - git config branch.master.merge refs/heads/master
   script:
-    - $(echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY")
+    - $(docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY")
     - sbt releaseMajor
   dependencies: []
   only:
