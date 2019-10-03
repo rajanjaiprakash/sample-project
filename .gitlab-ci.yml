@@ -19,7 +19,11 @@ build:
   stage: build
   before_script:
     - apk update && apk add git
+    - echo "Fixing git setup for $TRAVIS_BRANCH"
     - git checkout master
+    - git branch -u origin/master
+    - git config branch.master.remote origin
+    - git config branch.master.merge refs/heads/${TRAVIS_BRANCH}
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - sbt releaseMajor
