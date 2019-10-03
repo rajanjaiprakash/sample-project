@@ -18,7 +18,7 @@ variables:
 build:
   stage: build
   before_script:
-    - apt-get install git-core
+    - apk update && apk add git
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - sbt releaseMajor
