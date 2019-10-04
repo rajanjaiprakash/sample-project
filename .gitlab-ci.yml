@@ -20,13 +20,11 @@ build:
   before_script:
     - apk update && apk add git
     - echo "Fixing git setup for master"
-    - echo $CI_REGISTRY
-    - echo $CI_REGISTRY_USER
     - git checkout master
     - git config --global user.name "RAJAT JAIN"
     - git config --global user.email "rj.jain1008@gmail.com"
   script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+#    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - sbt releaseMajor
   dependencies: []
   only:
