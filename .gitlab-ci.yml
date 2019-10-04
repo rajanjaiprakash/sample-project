@@ -26,7 +26,7 @@ build:
     - git config --global user.name "RAJAT JAIN"
     - git config --global user.email "rj.jain1008@gmail.com"
   script:
-    - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin $REGISTRY
+    - $(echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin $REGISTRY)
     - sbt releaseMajor
   dependencies: []
   only:
