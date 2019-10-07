@@ -23,10 +23,7 @@ build:
     - git checkout master
     - git config --global user.name "RAJAT JAIN"
     - git config --global user.email "rj.jain1008@gmail.com"
-    - echo "CI detail"
-    - echo $CI_REGISTRY_USER
-    - echo $CI_REGISTRY_PASSWORD
-    - echo $CI_REGISTRY
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - sbt releaseMajor
   dependencies: []
