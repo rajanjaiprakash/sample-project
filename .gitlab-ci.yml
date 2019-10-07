@@ -25,7 +25,7 @@ build:
     - git config --global user.email "rj.jain1008@gmail.com"
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     #SSH setup
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
