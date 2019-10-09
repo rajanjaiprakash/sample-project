@@ -24,6 +24,7 @@ build:
     - git config --global user.name "RAJAT JAIN"
     - git config --global user.email "rj.jain1008@gmail.com"
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - git remote set-url origin https://$GIT_CI_USER:$GIT_CI_PASS@gitlab.com/$CI_PROJECT_PATH.git
     #SSH setup
     - apk add --update openssh
     - eval $(ssh-agent -s)
