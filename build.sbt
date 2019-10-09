@@ -1,7 +1,7 @@
 import sbtrelease._
 import sbtrelease.ReleaseStateTransformations._
 
-name := "sample-project"
+name := "hello-demo"
 scalaVersion := "2.13.0"
 
 releaseUseGlobalVersion := false
@@ -16,7 +16,7 @@ daemonUserUid in Docker := None
 daemonUser in Docker    := "daemon"
 dockerBaseImage := "openjdk:8-jre-alpine"
 dockerExposedPorts := Seq(9000)
-dockerUsername := Some("rj.jain1008")
+dockerUsername := Some("dragonaire")
 dockerRepository := Some("dragonaire/hello-demo")
 dockerAlias := dockerAlias.value.withRegistryHost(None)
 
