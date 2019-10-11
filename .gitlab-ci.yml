@@ -32,7 +32,7 @@ build:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
   script:
-    - sbt releaseMinor
+    - sbt releaseMajor
   dependencies: []
   only:
     - master
