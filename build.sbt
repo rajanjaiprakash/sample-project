@@ -6,11 +6,12 @@ scalaVersion := "2.13.0"
 
 releaseUseGlobalVersion := false
 releaseIgnoreUntrackedFiles := true
+git.useGitDescribe := true
 fork in run := true
 
 lazy val root = (project in file(".")).settings(resolvers += Resolver.sonatypeRepo("releases"))
 
-enablePlugins(DockerPlugin, JavaServerAppPackaging)
+enablePlugins(DockerPlugin, JavaServerAppPackaging, GitVersioning)
 
 daemonUserUid in Docker := None
 daemonUser in Docker    := "daemon"
