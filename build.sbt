@@ -44,7 +44,7 @@ releaseProcess := Seq(
   runClean,
   runTest,
   setReleaseVersion,
-  commitReleaseVersion,
+//  commitReleaseVersion,
   tagRelease,
   releaseStepTask(publish in Docker),
   pushChanges
