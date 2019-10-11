@@ -9,7 +9,7 @@ releaseIgnoreUntrackedFiles := true
 git.useGitDescribe := true
 fork in run := true
 
-//git.baseVersion := "0.0.0"
+git.baseVersion := "0.0.0"
 val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
 git.gitTagToVersionNumber := {
   case VersionRegex(v,"") => Some(v)
