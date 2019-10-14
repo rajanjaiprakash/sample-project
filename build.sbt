@@ -86,13 +86,13 @@ commands += Command.command("releaseMinor")((state: State) => {
 
 commands += Command.command("releaseOverride")((state: State) => {
   println("Preparing to override release...")
-//  val extracted = Project.extract(state)
-//
-//  val st = extracted.appendWithSession(Seq(releaseVersion := {ver =>
-//    Version(ver).fold(versionFormatError(ver))(
-//      _.withoutQualifier.string)}
-//  ), state)
-  Command.process("release with-defaults default-tag-exists-answer o", state)
+  val extracted = Project.extract(state)
+
+  val st = extracted.appendWithSession(Seq(releaseVersion := {ver =>
+    Version(ver).fold(versionFormatError(ver))(
+      _.withoutQualifier.string)}
+  ), state)
+  Command.process("release with-defaults release-default-tag-exists-answer o", state)
 })
 
 commands += Command.command("releaseMajor")((state: State) => {
