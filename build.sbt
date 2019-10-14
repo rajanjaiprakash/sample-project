@@ -92,7 +92,7 @@ commands += Command.command("releaseOverride")((state: State) => {
     Version(ver).fold(versionFormatError(ver))(
       _.withoutQualifier.string)}
   ), state)
-  Command.process("release with-defaults default-tag-exists-answer o", st)
+  Command.process("release with-defaults default-tag-exists-answer k", st)
 })
 
 commands += Command.command("releaseMajor")((state: State) => {
