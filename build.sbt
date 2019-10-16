@@ -14,7 +14,7 @@ val VersionRegex = "v([0-9]+.[0-9]+.[0-9]+)-?(.*)?".r
 git.gitTagToVersionNumber := {
   case VersionRegex(v,"") => Some(v)
   case VersionRegex(v,"SNAPSHOT") => Some(s"$v-SNAPSHOT")
-  case VersionRegex(v,s) => Some(s"$v-$s")
+  case VersionRegex(v,s) => Some(v)
   case _ => None
 }
 
@@ -92,7 +92,7 @@ commands += Command.command("releaseOverride")((state: State) => {
     Version(ver).fold(versionFormatError(ver))(
       _.withoutQualifier.string)}
   ), state)
-  Command.process(s"git tag -d ${versionString}", st)
+  Command.process(s"git tag -d ${releaseVersion.value}", st)
   Command.process("release with-defaults default-tag-exists-answer O", st)
 })
 
