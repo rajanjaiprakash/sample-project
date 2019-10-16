@@ -92,7 +92,7 @@ commands += Command.command("releaseOverride")((state: State) => {
     Version(ver).fold(versionFormatError(ver))(
       _.withoutQualifier.string)}
   ), state)
-  Command.process(s"git push --delete origin ${versionString}", st)
+  Command.process(s"git tag -d ${versionString}", st)
   Command.process("release with-defaults default-tag-exists-answer O", st)
 })
 
